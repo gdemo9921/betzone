@@ -1,1 +1,188 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BetZone Demo</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #101820;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+header {
+  background: #087b45;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo { font-size: 25px; font-weight: bold; }
+.balance {
+  background: #183329;
+  padding: 12px;
+  text-align: center;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+  background: #202d37;
+  padding: 15px 5px;
+}
+nav a { color: white; text-decoration: none; }
+main { padding: 16px; }
+h2 { color: #22c77b; }
+.match {
+  background: #202d37;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 12px 0;
+}
+.odds {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+button {
+  flex: 1;
+  padding: 13px 5px;
+  background: #087b45;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+button:active { opacity: .7; }
+.notice {
+  background: #493a17;
+  color: #ffdf83;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #aab5bd;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">BETZONE</div>
+  <div>☰ Menu</div>
+</header>
+
+<div class="balance">
+  DEMO BALANCE:
+  <strong id="balance">1,000</strong> VIRTUAL CREDITS
+</div>
+
+<nav>
+  <a href="#sports">Sports</a>
+  <a href="#wallet">Wallet</a>
+  <a href="#account">Account</a>
+</nav>
+
+<main>
+  <div class="notice">
+    DEMO PLATFORM ONLY.
+    Virtual credits have no cash value.
+    No real deposits or withdrawals.
+  </div>
+
+  <h2>Sportsbook</h2>
+  <p>Featured demo matches</p>
+
+  <section id="sports">
+    <div class="match">
+      <strong>Football</strong>
+      <p>Demo Team A vs Demo Team B</p>
+      <div class="odds">
+        <button onclick="selectBet('Team A', 1.80)">
+          Team A 1.80
+        </button>
+        <button onclick="selectBet('Draw', 3.20)">
+          Draw 3.20
+        </button>
+        <button onclick="selectBet('Team B', 2.10)">
+          Team B 2.10
+        </button>
+      </div>
+    </div>
+
+    <div class="match">
+      <strong>Basketball</strong>
+      <p>Demo Team C vs Demo Team D</p>
+      <div class="odds">
+        <button onclick="selectBet('Team C', 1.65)">
+          Team C 1.65
+        </button>
+        <button onclick="selectBet('Team D', 2.30)">
+          Team D 2.30
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="wallet">
+    <h2>Demo Wallet</h2>
+    <p>Virtual credits only</p>
+    <button onclick="addCredits()">
+      Add 500 Demo Credits
+    </button>
+  </section>
+
+  <section id="account">
+    <h2>Player Account</h2>
+    <p>Welcome to BetZone Demo</p>
+  </section>
+</main>
+
+<footer>
+  BETZONE DEMO © 2026
+  <p>Educational demonstration only.</p>
+</footer>
+
+<script>
+let balance = 1000;
+
+function updateBalance() {
+  document.getElementById("balance").textContent =
+    balance.toLocaleString();
+}
+
+function selectBet(team, odds) {
+  const stake = 50;
+
+  if (balance < stake) {
+    alert("Insufficient demo credits");
+    return;
+  }
+
+  if (confirm(
+    "Demo selection: " + team +
+    "\nOdds: " + odds +
+    "\nVirtual stake: " + stake +
+    "\nConfirm?"
+  )) {
+    balance -= stake;
+    updateBalance();
+    alert("Demo selection recorded. Remaining credits: " + balance);
+  }
+}
+
+function addCredits() {
+  balance += 500;
+  updateBalance();
+  alert("500 virtual credits added!");
+}
+</script>
+
+</body>
+  </html>
+  
